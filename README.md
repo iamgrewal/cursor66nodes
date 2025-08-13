@@ -130,6 +130,62 @@ On success, call DocGenerator MCP to create/update documentation.
 
 The AI agent will interpret these rules during the corresponding workflow phase and execute the MCP call. This rule-based approach allows for a flexible and powerful way to extend the agent's capabilities without changing its core implementation.
 
+## Dynamic Agent Personas
+
+To make the AI agent even more adaptable, this project includes a persona-based rule system. This allows you to dynamically change the agent's behavior and expertise by selecting a "persona" that is best suited for your project's needs (e.g., "Python Backend Developer", "Frontend Developer").
+
+The persona system works by loading a specific set of `rulescursor` rules based on the selected persona.
+
+### 1. Set the Active Persona
+
+To set the active persona for your project, open the `project_config.md` file and edit the `PERSONA` section.
+
+**Example `project_config.md`:**
+```markdown
+<!-- STATIC:PERSONA:START -->
+## Persona
+python_backend_developer
+<!-- STATIC:PERSONA:END -->
+```
+The name you enter here must correspond to a persona defined in `persona.mcp.json`.
+
+### 2. Define Personas in `persona.mcp.json`
+
+The available personas and the rules they use are defined in the `persona.mcp.json` file. This file allows you to create new personas or customize existing ones.
+
+Each persona has a list of rule files it uses. Personas can also `inherit` rules from a parent persona (like `default`), making it easy to build specialized personas.
+
+**Example `persona.mcp.json`:**
+```json
+{
+  "personas": {
+    "default": {
+      "rules": [
+        "core/agent-personality.mdc",
+        "tools/git-commit-message.mdc"
+      ]
+    },
+    "python_backend_developer": {
+      "inherits": "default",
+      "rules": [
+        "lng/python/formatting.mdc"
+      ]
+    }
+  }
+}
+```
+In this example, the `python_backend_developer` persona will use all the rules from the `default` persona, plus the `lng/python/formatting.mdc` rule.
+
+### 3. Apply the Persona
+
+After setting your desired persona in `project_config.md`, you need to run the `apply_persona.py` script to download and apply the corresponding rule set.
+
+Run the script from your terminal:
+```bash
+python apply_persona.py
+```
+The script will read your configuration, fetch the correct rules, and place them in the `.cursor/rules` directory, ready for the AI agent to use. You should run this script whenever you change the persona.
+
 ## Key Features
 
 ### Blueprint Archiving

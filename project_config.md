@@ -38,6 +38,11 @@ No file moves across module boundaries without explicit instruction
 3.5ch/token; 8K cap; summarize workflow_state.md>12K
 <!-- STATIC:TOKENIZATION:END -->
 
+<!-- STATIC:PERSONA:START -->
+## Persona
+default
+<!-- STATIC:PERSONA:END -->
+
 <!-- STATIC:MODEL_CONFIG:START -->
 ## Model Config
 Type: [feature|bugfix|refactor|test|chore]

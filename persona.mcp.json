@@ -1,0 +1,34 @@
+{
+  "personas": {
+    "default": {
+      "rules": [
+        "core/agent-personality.mdc",
+        "core/code-comments.mdc",
+        "core/coding-principles.mdc",
+        "core/cursor-rules.mdc",
+        "core/emoji-usage.mdc",
+        "tasks/decomposition-best-practices.mdc",
+        "tasks/feature-design-drafts.mdc",
+        "tools/git.mdc",
+        "tools/git-commit-message.mdc",
+        "tools/unix-directory-listing.mdc",
+        "tools/windows-directory-listing.mdc"
+      ]
+    },
+    "python_backend_developer": {
+      "inherits": "default",
+      "rules": [
+        "lng/python/formatting.mdc",
+        "lng/python/best-practices.mdc"
+      ]
+    },
+    "frontend_developer": {
+      "inherits": "default",
+      "rules": [
+        "lng/javascript/formatting.mdc",
+        "lng/typescript/formatting.mdc",
+        "lng/react/best-practices.mdc"
+      ]
+    }
+  }
+}

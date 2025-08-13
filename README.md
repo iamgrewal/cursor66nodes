@@ -76,6 +76,60 @@ graph LR
    ```
 4. **Begin Development**: The AI will initialize and request your first task
 
+## Extensible MCP Framework
+
+This workflow is designed to be extensible through the use of MCP (Multi-Agent Controller Processor) servers. MCPs are external tools or services that can be called upon by the AI agent to perform specialized tasks, such as code analysis, documentation generation, or interacting with external APIs.
+
+This extensibility is achieved through two key files: `.mcp.json` for configuration and `workflow_state.md` for rule-based invocation.
+
+### Configuring MCPs in `.mcp.json`
+
+To add a new MCP, you need to define it in the `.mcp.json` file located in the root of the repository. This file contains a list of all available MCP servers and their connection details.
+
+Here is an example of a `.mcp.json` file:
+
+```json
+{
+  "mcp_servers": {
+    "Firecrawl": {
+      "description": "Turns websites into structured, LLM-ready data.",
+      "endpoint": "http://localhost:8002/api/v1",
+      "api_key": "YOUR_FIRECRAWL_API_KEY",
+      "enabled": true
+    },
+    "CodeAnalyzer": {
+      "description": "Performs static and dynamic analysis of code.",
+      "endpoint": "http://localhost:8005/api/v1",
+      "api_key": "YOUR_CODEANALYZER_API_KEY",
+      "enabled": true
+    }
+  }
+}
+```
+
+Each MCP entry should have:
+-   `description`: A brief explanation of what the MCP does.
+-   `endpoint`: The API endpoint for the MCP server.
+-   `api_key`: The API key for authentication (use placeholders).
+-   `enabled`: A boolean to easily enable or disable the MCP.
+
+### Invoking MCPs with Rules in `workflow_state.md`
+
+Once an MCP is configured, you can define rules in `workflow_state.md` to tell the AI agent when and how to use it. These rules are added to the `<!-- STATIC:RULES:START -->` section.
+
+For example, to use the `Firecrawl` and `CodeAnalyzer` MCPs from the example above, you could add the following rules:
+
+```markdown
+### [PHASE: ANALYZE]
+If input contains a URL, call FirecrawlMCP to get structured data.
+Call CodeAnalyzer MCP to perform static analysis on relevant files.
+
+### [PHASE: VALIDATE]
+On success, call DocGenerator MCP to create/update documentation.
+```
+
+The AI agent will interpret these rules during the corresponding workflow phase and execute the MCP call. This rule-based approach allows for a flexible and powerful way to extend the agent's capabilities without changing its core implementation.
+
 ## Key Features
 
 ### Blueprint Archiving

@@ -66,7 +66,7 @@ graph LR
 
 ## Getting Started
 
-1. **Locate Configuration Files**: Find `project_config.md` and `workflow_state.md` in the `cursorkleosr/` directory
+1. **Locate Configuration Files**: Find `project_config.md` and `workflow_state.md` in the `cursor66nodes/` directory
 2. **Configure Project**: Customize `project_config.md` with your project specifics
 3. **Initialize AI**: Use this system prompt in Cursor:
    ```
@@ -216,5 +216,5 @@ We welcome contributions and improvements to this system. Please share your expe
 
 ---
 
-**Note**: This project builds upon the concepts from `iamgrewal/cursorkleosr` while focusing on simplicity and practicality for everyday development.
+**Note**: This project builds upon the concepts from `iamgrewal/cursor66nodes` while focusing on simplicity and practicality for everyday development.
 ```

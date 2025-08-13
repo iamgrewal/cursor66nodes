@@ -34,6 +34,16 @@ Run lint, typecheck, and tests via repo scripts
 Measure coverage and ensure thresholds in project_config.md
 Produce diff summary and risk notes
 If failures, rollback to last checkpoint and reduce complexity
+On success, call DocGenerator MCP to create/update documentation.
+
+### RULE_MCP_CONFIG: On INIT, load and parse .mcp.json. Enable/disable MCPs based on config.
+
+### [PHASE: ANALYZE]
+If input contains a URL, call FirecrawlMCP to get structured data.
+Call CodeAnalyzer MCP to perform static analysis on relevant files.
+If external libraries/APIs are mentioned, call Context7 MCP to fetch information.
+
+### RULE_COMPLEXITY: For tasks with C≥4, use SequentialThinking MCP to break down the problem.
 
 ### RULE_FLOW: INIT→ANALYZE→PREPARE→IMPLEMENT→VALIDATE→COMPLETED|ROLLBACK  
 

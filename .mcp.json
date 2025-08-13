@@ -1,0 +1,34 @@
+{
+  "mcp_servers": {
+    "Context7": {
+      "description": "Accesses public APIs and GitHub repositories.",
+      "endpoint": "http://localhost:8001/api/v1",
+      "api_key": "YOUR_CONTEXT7_API_KEY",
+      "enabled": true
+    },
+    "Firecrawl": {
+      "description": "Turns websites into structured, LLM-ready data.",
+      "endpoint": "http://localhost:8002/api/v1",
+      "api_key": "YOUR_FIRECRAWL_API_KEY",
+      "enabled": true
+    },
+    "SequentialThinking": {
+      "description": "Ensures thorough evaluation of complex problems.",
+      "endpoint": "http://localhost:8003/api/v1",
+      "api_key": "YOUR_SEQUENTIALTHINKING_API_KEY",
+      "enabled": false
+    },
+    "DocGenerator": {
+      "description": "Generates documentation from code.",
+      "endpoint": "http://localhost:8004/api/v1",
+      "api_key": "YOUR_DOCGENERATOR_API_KEY",
+      "enabled": true
+    },
+    "CodeAnalyzer": {
+      "description": "Performs static and dynamic analysis of code.",
+      "endpoint": "http://localhost:8005/api/v1",
+      "api_key": "YOUR_CODEANALYZER_API_KEY",
+      "enabled": true
+    }
+  }
+}
